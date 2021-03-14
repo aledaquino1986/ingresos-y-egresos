@@ -1,0 +1,121 @@
+.card {
+  border: 2px solid #fff;
+
+  color: white;
+  min-height: 20rem;
+  flex-basis: 30%;
+  margin: 2rem;
+  border-radius: 10px;
+  transition: all 0.5s;
+  box-shadow: 0 0.5rem 1rem rgba(43, 39, 39, 0.5);
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-0.8rem);
+  box-shadow: 0 0.5rem 2rem rgba(43, 39, 39, 0.5);
+}
+
+.expenditure {
+  background-color: rgb(151, 60, 60);
+
+  background-size: cover;
+}
+
+.income {
+  background: rgb(58, 95, 2);
+}
+
+.card__picture-expenditure,
+.card__picture-income {
+  background-blend-mode: screen;
+  height: 15rem;
+  background-size: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.card__picture-expenditure {
+  background-image: linear-gradient(
+      to right bottom,
+      rgb(102, 6, 6),
+      rgb(167, 52, 52)
+    ),
+    url(../../assets/images/calculator.jpg);
+  background-position: 50% calc(50% - 300px);
+}
+
+.card__picture-income {
+  background-image: linear-gradient(
+      to right bottom,
+      rgb(69, 99, 24),
+      rgb(21, 36, 1)
+    ),
+    url(../../assets//images/piggy-bank.jpg);
+  background-position: 50% calc(50% - 230px);
+}
+
+.card__heading {
+  font-size: 3rem;
+  font-weight: 300;
+  text-align: right;
+  width: 75%;
+  text-transform: uppercase;
+  position: absolute;
+  top: 6.5rem;
+  right: 1rem;
+}
+
+.card__heading-expenditure-span,
+.card__heading-income-span {
+  padding: 1rem 3rem;
+  box-decoration-break: clone;
+  -webkit-box-direction: clone;
+}
+
+.card__heading-expenditure-span {
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(102, 6, 6, 0.445),
+    rgba(167, 52, 52)
+  );
+}
+
+.card__heading-income-span {
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(69, 99, 24, 0.445),
+    rgb(21, 36, 1)
+  );
+}
+
+.card__description {
+  margin: 3rem 0rem;
+  font-size: 2rem;
+}
+
+.card__description-list li {
+  border-bottom: 1px solid black;
+  padding: 0.5rem 2rem;
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1332px) {
+  .card {
+    flex-basis: 50rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card {
+    flex-basis: 50rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .card {
+    flex-basis: 37rem;
+  }
+}

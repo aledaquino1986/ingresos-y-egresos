@@ -1,3 +1,23 @@
-.App {
-  text-align: center;
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif, Helvetica;
+  color: #fff;
+  background-color: rgb(190, 178, 178);
+}
+
+ul {
+  list-style-type: none;
 }
