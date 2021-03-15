@@ -1,0 +1,55 @@
+.header__section {
+  width: 100%;
+  margin-bottom: 3rem;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(17, 16, 16, 0.438),
+    rgb(4, 4, 20)
+  );
+
+  padding-bottom: 4rem;
+  background-size: cover;
+  background-position: 50% calc(50% - 0px);
+}
+
+.header__section h2 {
+  font-size: 4.5rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin: 2rem 0;
+  background-color: rgb(236, 227, 227);
+  color: black;
+  display: inline-block;
+  padding: 1rem;
+  width: 100%;
+}
+
+.header__section-amount {
+  background-color: rgb(236, 227, 227);
+  color: black;
+  font-weight: 500;
+}
+
+.header__section p {
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 5px;
+  margin-top: 5rem;
+}
+
+
+@media (max-width: 600px) {
+
+  .header__section h2 {
+font-size: 3rem;
+  }
+
+  .header__section p {
+font-size: 2.5rem;
+  }
+
+   div.balance__operations > h3 {
+    font-size: 2.5rem;
+  }
+
+}

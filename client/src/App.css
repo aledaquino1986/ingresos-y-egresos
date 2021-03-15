@@ -16,8 +16,28 @@ body {
   font-family: "Poppins", sans-serif, Helvetica;
   color: #fff;
   background-color: rgb(190, 178, 178);
+  
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(102, 6, 6, 0.438),
+    rgba(23, 23, 153)
+  );
+
+  background-size: cover;
+  background-position: top;
+  min-height: 100vh;
 }
 
 ul {
   list-style-type: none;
 }
+
+

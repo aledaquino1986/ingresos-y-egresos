@@ -1,18 +1,17 @@
 import React from "react";
 
 import Card from "../card/Card";
+import SectionHeader from "../layout/SectionHeader";
 import "./home.css";
 
 const Home = () => {
   return (
-    <section className="balance">
-      <header className="balance__total">
-        <h1>Balance de ingresos y egresos</h1>
+    <section className="section">
+      <SectionHeader heading="Balance de ingresos y egresos">
         <p>
-          Su total: <span className="balance__total-amount">$20000</span>
+          Su total: <span className="header__section-amount">$20000</span>
         </p>
-      </header>
-
+      </SectionHeader>
       <div className="balance__operations">
         <h3 className="balance__operations-heading">Últimas 10 operaciones</h3>
       </div>

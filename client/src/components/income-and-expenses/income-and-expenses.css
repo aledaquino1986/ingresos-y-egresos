@@ -1,0 +1,26 @@
+.form-container {
+  background-image: linear-gradient(0deg, #00000088 55%, #ffffff34 100%),
+    url("../../assets/images/piggy-bank.jpg");
+  background-size: cover;
+  padding: 3rem;
+  width: 75%;
+  
+  margin-bottom: 3rem;
+  border-radius: 10px;
+   background-position: 20% calc(50% - 0px);
+  
+}
+
+
+
+@media (max-width: 600px) {
+
+  .form-container {
+    width: 90%;
+    background-size: cover;
+    background-position: 20% calc(50% - 0px);
+  }
+  
+
+}
+

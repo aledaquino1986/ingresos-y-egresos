@@ -1,57 +1,6 @@
-.balance {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-image: linear-gradient(
-    to right bottom,
-    rgba(102, 6, 6, 0.438),
-    rgba(23, 23, 153)
-  );
 
-  background-size: cover;
-  background-position: top;
-  min-height: 100vh;
-}
 
-.balance__total {
-  width: 100%;
-  margin-bottom: 3rem;
-  background-image: linear-gradient(
-    to right bottom,
-    rgba(17, 16, 16, 0.438),
-    rgb(4, 4, 20)
-  );
 
-  padding-bottom: 7rem;
-  background-size: cover;
-  background-position: 50% calc(50% - 0px);
-}
-
-.balance__total h1 {
-  font-size: 6rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-  margin-top: 5rem;
-  background-color: rgb(236, 227, 227);
-  color: black;
-  display: inline-block;
-  padding: 1rem;
-}
-
-.balance__total-amount {
-  background-color: rgb(236, 227, 227);
-  color: black;
-  font-weight: 500;
-}
-
-.balance__total p {
-  font-size: 4rem;
-  font-weight: 300;
-  letter-spacing: 5px;
-  margin-top: 5rem;
-}
 
 .balance__operations-heading {
   font-size: 4rem;
