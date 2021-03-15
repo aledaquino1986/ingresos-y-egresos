@@ -1,6 +1,5 @@
 .form-container {
-  background-image: linear-gradient(0deg, #00000088 55%, #ffffff34 100%),
-    url("../../assets/images/piggy-bank.jpg");
+  
   background-size: cover;
   padding: 3rem;
   width: 75%;
@@ -9,6 +8,24 @@
   border-radius: 10px;
    background-position: 20% calc(50% - 0px);
   
+}
+
+.form-container-income {
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(69, 99, 24, 0.144),
+    rgb(53, 87, 9)
+  ),
+    url("../../assets/images/piggy-bank.jpg");
+}
+
+.form-container-expenses {
+  background-image:  linear-gradient(
+    to right bottom,
+    rgba(102, 6, 6, 0.199),
+    rgba(167, 52, 52)
+  ),
+    url("../../assets/images/calculator.jpg");
 }
 
 

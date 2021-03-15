@@ -6,8 +6,12 @@ const style = {
   greenColor: "green"
 };
 
-const Button = ({ text, color = "black" }) => {
-  return <button className={`button button-${color}`}>{text}</button>;
+const Button = ({ text, color = "black", onClick, type }) => {
+  return (
+    <button className={`button button-${color}`} onClick={onClick} type={type}>
+      {text}
+    </button>
+  );
 };
 
 export default Button;

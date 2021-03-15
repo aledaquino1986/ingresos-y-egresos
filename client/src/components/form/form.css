@@ -38,6 +38,15 @@
 }
 
 
+.error, .error p, .error p span {
+  transition: all .5s;
+}
+
+.error {
+  transition: all .5s;
+}
+
+
 @media (max-width: 600px) {
 
   .form input {
