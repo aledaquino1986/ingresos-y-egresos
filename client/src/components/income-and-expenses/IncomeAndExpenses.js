@@ -1,47 +1,92 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SectionHeader from "../layout/SectionHeader";
 import Form from "../form/Form";
-import Button from "../button/Button";
+import Button from "../ui/button/Button";
 
-import setCurrentState from "../../utils/utils";
 import "./income-and-expenses.css";
-import Card from "../card/Card";
+import Card from "../ui/card/Card";
+
+const defaultValues = {
+  operation: "income",
+  operationDescription: "",
+  operationAmount: 0
+};
 
 const IncomeAndExpenses = () => {
-  const [operation, setOperation] = useState("income");
-  const [operationDescription, setoperationDescription] = useState("");
-  const [operationAmount, setOperationAmount] = useState(0);
+  const [dataFromDatabase, setDataFromDatabase] = useState([]);
+  const [operationValues, setOperationValues] = useState(defaultValues);
+
+  const { operation, operationDescription, operationAmount } = operationValues;
 
   const INCOME = "income";
   const EXPENSES = "expenses";
+  const SMALL_SIZE = "small";
+
+  useEffect(() => {
+    fetch("/api/operation")
+      .then(response => {
+        return response.json();
+      })
+      .then(incomeExpenses => {
+        setDataFromDatabase(incomeExpenses);
+        console.log(dataFromDatabase);
+      });
+  }, []);
 
   return (
     <section className="section section-form">
       <SectionHeader heading="Fill out the form to track your expenses">
         <div className="buttons">
           <Button
+            size={operation !== EXPENSES ? SMALL_SIZE : ""}
             text="Expenses"
             color="red"
-            onClick={() => setCurrentState(EXPENSES, setOperation)}
+            onClick={() =>
+              setOperationValues(previous => ({
+                ...previous,
+                operation: EXPENSES
+              }))
+            }
           />
           <Button
+            size={operation !== INCOME ? SMALL_SIZE : ""}
             text="Income"
             color="green"
-            onClick={() => setCurrentState(INCOME, setOperation)}
+            onClick={() =>
+              setOperationValues(previous => ({
+                ...previous,
+                operation: INCOME
+              }))
+            }
           />
         </div>
       </SectionHeader>
 
       <div className={`form-container form-container-${operation}`}>
         <Form
-          description="Description"
-          amount="Amount"
           operationAmount={operationAmount}
           operationDescription={operationDescription}
-          setoperationDescription={setoperationDescription}
-          setOperationAmount={setOperationAmount}
+          setOperationValues={setOperationValues}
           operation={operation}
+          dataFromDatabase={dataFromDatabase}
+          setDataFromDatabase={setDataFromDatabase}
         />
+      </div>
+
+      <div className="card-container">
+        {dataFromDatabase.map(entry => {
+          const { id, amount, description, type, date } = entry;
+          return (
+            <Card
+              key={id}
+              className={type === "expenses" ? "expenditure" : "income"}
+              amount={amount}
+              description={description}
+              date={date}
+              type={type}
+            />
+          );
+        })}
       </div>
     </section>
   );

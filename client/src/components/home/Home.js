@@ -1,6 +1,6 @@
 import React from "react";
 
-import Card from "../card/Card";
+import Card from "../ui/card/Card";
 import SectionHeader from "../layout/SectionHeader";
 import "./home.css";
 

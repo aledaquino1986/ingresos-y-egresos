@@ -41,7 +41,7 @@
       rgb(102, 6, 6),
       rgb(167, 52, 52)
     ),
-    url(../../assets/images/calculator.jpg);
+    url(../../../assets/images/calculator.jpg);
   background-position: 50% calc(50% - 300px);
 }
 
@@ -51,7 +51,7 @@
       rgb(69, 99, 24),
       rgb(21, 36, 1)
     ),
-    url(../../assets//images/piggy-bank.jpg);
+    url(../../../assets//images/piggy-bank.jpg);
   background-position: 50% calc(50% - 230px);
 }
 

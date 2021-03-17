@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import Button from "../button/Button";
+import Button from "../ui/button/Button";
+import TextField from "../ui/text-field/TextField";
 
-import setCurrentState from "../../utils/utils";
+import { today } from "../../utils/utils";
 import "./form.css";
 
 const Form = ({
-  description,
-  amount,
   operationAmount,
   operationDescription,
-  setoperationDescription,
-  setOperationAmount,
+  setOperationValues,
+  dataFromDatabase,
+  setDataFromDatabase,
   operation
 }) => {
   const [amountError, setAmountError] = useState("");
@@ -18,6 +18,52 @@ const Form = ({
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (!operationAmount || !operationDescription || !operation) {
+      console.error("Input fields empty");
+      return;
+    }
+
+    fetch("/api/operation", {
+      method: "POST",
+      body: JSON.stringify({
+        operationAmount,
+        operationDescription,
+        operation,
+        today
+      }),
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(() => {
+        console.log(dataFromDatabase);
+        console.log("success");
+        setDataFromDatabase([
+          ...dataFromDatabase,
+          {
+            amount: operationAmount,
+            description: operationDescription,
+            type: operation,
+            date: today
+          }
+        ]);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    console.log(dataFromDatabase);
+    console.log("success");
+    setDataFromDatabase([
+      ...dataFromDatabase,
+      {
+        id: dataFromDatabase.length + 1,
+        amount: operationAmount,
+        description: operationDescription,
+        type: operation,
+        date: today
+      }
+    ]);
+    console.log(dataFromDatabase);
     console.log(operationDescription, operationAmount, operation);
   };
 
@@ -40,64 +86,62 @@ const Form = ({
 
   return (
     <form action="" className="form" onSubmit={handleSubmit}>
-      <div className="form__input">
-        <label htmlFor={description}>{description}</label>
-        <div className="error">
-          <p> {descriptionError ? <span> {descriptionError}</span> : ""}</p>
-        </div>
-        <input
-          type="text"
-          id={description}
-          placeholder="Bought plane ticket"
-          onChange={e =>
-            setCurrentState(e.target.value, setoperationDescription)
-          }
-          onBlur={() =>
-            errorHandler(
-              operationDescription,
-              setDescriptionError,
-              "The input field must be of no more than 40 characters",
-              descriptionError
-            )
-          }
-          onFocus={() =>
-            errorHandler(
-              operationDescription,
-              setDescriptionError,
-              null,
-              descriptionError
-            )
-          }
-        />
+      <div className="error">
+        <p> {descriptionError ? <span> {descriptionError}</span> : ""}</p>
       </div>
-      <div className="form__input">
-        <label htmlFor={amount}>{amount}</label>
-        <div className="error">
-          <p> {amountError ? <span> {amountError}</span> : ""}</p>
-        </div>
-        <input
-          type="number"
-          id={amount}
-          placeholder="300"
-          onChange={e => setCurrentState(e.target.value, setOperationAmount)}
-          onBlur={() =>
-            errorHandler(
-              operationAmount,
-              setAmountError,
-              "Input field must be a valid number",
-              amountError
-            )
-          }
-          onFocus={() =>
-            errorHandler(
-              operationAmount,
-              setAmountError,
-              null,
-              descriptionError
-            )
-          }
-        />
+
+      <TextField
+        label="Description"
+        placeHolder="Bought plane ticket"
+        onChange={e =>
+          setOperationValues(previous => ({
+            ...previous,
+            operationDescription: e.target.value
+          }))
+        }
+        onBlur={() =>
+          errorHandler(
+            operationDescription,
+            setDescriptionError,
+            "The input field must be of no more than 40 characters",
+            descriptionError
+          )
+        }
+        onFocus={() =>
+          errorHandler(
+            operationDescription,
+            setDescriptionError,
+            null,
+            descriptionError
+          )
+        }
+      />
+
+      <div className="error">
+        <p> {amountError ? <span> {amountError}</span> : ""}</p>
       </div>
+      <TextField
+        label="Amount"
+        placeHolder="300"
+        onChange={e =>
+          setOperationValues(previous => ({
+            ...previous,
+            operationAmount: e.target.value
+          }))
+        }
+        onBlur={() =>
+          errorHandler(
+            operationAmount,
+            setAmountError,
+            "Input field must be a valid number",
+            amountError
+          )
+        }
+        onFocus={() =>
+          errorHandler(operationAmount, setAmountError, null, descriptionError)
+        }
+      />
+
       <Button text="submit" type="submit" />
     </form>
   );
